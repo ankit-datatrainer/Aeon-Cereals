@@ -242,6 +242,7 @@
     if (typeof Lenis === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
     window.lenis = lenis;
+    lenis.on('scroll', e => document.getElementById('header').classList.toggle('is-scrolled', e.scroll > 40));
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(t => lenis.raf(t * 1000));
