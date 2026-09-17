@@ -137,7 +137,7 @@ p{max-width:66ch}
 .link-arrow{display:inline-flex;align-items:center;gap:9px;font-weight:500;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
 .link-arrow svg{width:15px;height:15px;transition:transform .4s var(--ease-out)}
 .link-arrow:hover svg{transform:translateX(5px)}
-.section--blue .link-arrow,.section--dark .link-arrow,.tile .link-arrow{color:var(--gold)}
+.section--blue .link-arrow,.section--dark .link-arrow,.biz__copy .link-arrow,.product .link-arrow{color:var(--gold)}
 
 /* ---------- Preloader ---------- */
 .preloader{
