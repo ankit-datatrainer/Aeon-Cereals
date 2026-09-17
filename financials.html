@@ -5,29 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Financials — Aeon Cereals Limited</title>
 <meta name="description" content="Request the Aeon Cereals Limited company report. Verify your mobile number with an OTP and the report opens instantly.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='22' fill='%230b1f16'/%3E%3Cpath d='M24 8c4 6 6 11 6 16s-2 10-6 16c-4-6-6-11-6-16s2-10 6-16Z' fill='%23c9a24a'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23D2AB67'/%3E%3Cpath d='M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <main data-speech="Financials. Aeon Cereals Limited has an authorised capital of one crore rupees and paid-up capital of eighty one point five seven lakh rupees. To receive the company report, enter your name, email and mobile number, request an OTP, verify it, and the report opens as a PDF.">
 
-  <section class="page-hero" style="min-height:58vh">
+  <section class="page-hero">
     <div class="page-hero__img" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80')"></div>
-    <div class="page-hero__orb"></div>
     <div class="container">
-      <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="financials.html">Financials</a></div>
-      <h1 data-split>Financials &amp; Reports</h1>
-      <p class="lead" data-reveal="up" data-delay=".3">Capital structure, statutory record and a verified download of the company dossier.</p>
+      <span class="kicker">Investors &amp; partners</span>
+      <h1>Financials &amp; Reports <em>Capital, statutory record and verified downloads</em></h1>
     </div>
   </section>
 
-  <section class="section section--dark" style="padding-block:clamp(40px,5vw,70px)">
+  <div class="crumbbar">
     <div class="container">
-      <div class="stats" data-stagger="scale">
-        <div class="stat"><b>₹<span data-count="1">0</span> Cr</b><span>Authorised capital</span></div>
-        <div class="stat"><b>₹<span data-count="81.57">0</span> L</b><span>Paid-up capital</span></div>
+      <a href="index.html">Home</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      <b>Financials</b>
+    </div>
+  </div>
+
+  <section class="section section--tight section--blue">
+    <div class="container">
+      <div class="stats" data-stagger="up">
+        <div class="stat"><b>&#8377;<span data-count="1">0</span> Cr</b><span>Authorised capital</span></div>
+        <div class="stat"><b>&#8377;<span data-count="81.57">0</span> L</b><span>Paid-up capital</span></div>
         <div class="stat"><b><span data-count="1995">0</span></b><span>Year of incorporation</span></div>
         <div class="stat"><b>Active</b><span>MCA status</span></div>
       </div>
@@ -37,14 +43,13 @@
   <section class="section">
     <div class="container fin-layout">
 
-      <!-- LEFT: the gated flow -->
       <div data-reveal="left">
-        <span class="eyebrow">Verified download</span>
-        <h2 data-split style="margin:14px 0 24px">Request the company report.</h2>
-        <div class="fin-panel">
+        <span class="kicker">Verified download</span>
+        <h2 data-split>Request the company report</h2>
+        <div class="rule"></div>
+        <div class="fin-panel mt-2">
           <div class="steps"><span class="is-done"></span><span></span><span></span></div>
 
-          <!-- STEP 1 -->
           <form class="fin-step is-active" id="finForm" novalidate>
             <h3>Your details</h3>
             <p>We will send a one-time password to your mobile number to unlock the report.</p>
@@ -53,12 +58,11 @@
             <div class="field"><label for="fPhone">Mobile number</label>
               <div class="field-row"><input type="text" value="+91" disabled aria-label="Country code"><input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10-digit number"></div><span class="err"></span></div>
             <div class="field"><label for="fCompany">Organisation <span style="opacity:.5;text-transform:none;letter-spacing:0">(optional)</span></label><input id="fCompany" name="company" type="text" autocomplete="organization" placeholder="Company / institution"></div>
-            <label style="display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-500);margin:6px 0 4px"><input type="checkbox" name="consent" style="margin-top:4px;accent-color:var(--green-700)"> <span>I agree to be contacted by Aeon Cereals Limited regarding this request and accept that my details will be stored for compliance purposes.</span></label>
-            <span class="err" id="consentErr" style="display:block;font-size:.74rem;color:#c0392b;min-height:1.2em;margin-bottom:12px"></span>
-            <button class="btn btn--primary btn--block" type="submit"><span>Request OTP</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <label style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--ink-mid);margin:6px 0 4px"><input type="checkbox" name="consent" style="margin-top:5px;accent-color:var(--blue)"> <span>I agree to be contacted by Aeon Cereals Limited regarding this request and accept that my details will be stored for compliance purposes.</span></label>
+            <span class="err" id="consentErr" style="display:block;font-size:.76rem;color:var(--down);min-height:1.2em;margin-bottom:12px"></span>
+            <button class="btn btn--solid btn--block" type="submit"><span>Request OTP</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
 
-          <!-- STEP 2 -->
           <div class="fin-step" id="stepOtp">
             <h3>Enter the OTP</h3>
             <p>A 6-digit code was sent to <strong id="otpPhone">+91</strong>. For this demo the code also appears in the message at the top-right of your screen.</p>
@@ -70,66 +74,63 @@
               <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5">
               <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6">
             </div>
-            <span class="err" id="otpErr" style="display:block;font-size:.78rem;color:#c0392b;min-height:1.2em;margin-bottom:8px"></span>
+            <span class="err" id="otpErr" style="display:block;font-size:.8rem;color:var(--down);min-height:1.2em;margin-bottom:8px"></span>
             <div class="otp-help"><span id="otpTimer"></span><span>Didn't get it? <button type="button" id="resendOtp" disabled>Resend OTP</button></span></div>
-            <button class="btn btn--primary btn--block" type="button" id="verifyBtn"><span>Verify &amp; Open Report</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            <button type="button" id="backBtn" style="display:block;margin:16px auto 0;font-size:.8rem;color:var(--ink-500);text-decoration:underline">← Change details</button>
+            <button class="btn btn--solid btn--block" type="button" id="verifyBtn"><span>Verify &amp; Open Report</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button type="button" id="backBtn" style="display:block;margin:16px auto 0;font-size:.85rem;color:var(--ink-mid);text-decoration:underline">Change details</button>
           </div>
 
-          <!-- STEP 3 -->
           <div class="fin-step">
             <div class="success">
               <svg class="success__check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><path d="M38 62l14 14 30-32"/></svg>
               <h3>Verified, <span id="successName"></span>.</h3>
               <p>Your report has opened in a new tab and is also available below.</p>
-              <a class="btn btn--primary" data-pdf href="#" target="_blank" rel="noopener">Open in new tab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-              <a class="btn btn--outline" data-pdf href="#" download="Aeon-Cereals-Report.pdf">Download PDF</a>
-              <p id="popupNote" style="font-size:.78rem;margin-top:16px"></p>
+              <a class="btn btn--solid" data-pdf href="#" target="_blank" rel="noopener">open in new tab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <a class="btn" data-pdf href="#" download="Aeon-Cereals-Report.pdf">download PDF</a>
+              <p id="popupNote" style="font-size:.8rem;margin-top:16px"></p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT: context -->
       <aside class="fin-side" data-reveal="right">
-        <span class="eyebrow">Statutory record</span>
-        <h2 data-split style="margin:14px 0 24px">Capital &amp; filings</h2>
-        <div class="card" data-tilt="5">
+        <span class="kicker">Statutory record</span>
+        <h2 data-split>Capital &amp; filings</h2>
+        <div class="rule"></div>
+        <div class="card mt-2">
           <h3 style="margin-top:0">Capital structure</h3>
           <div class="facts" style="margin-top:14px">
-            <div><small>Authorised</small><b>₹1,00,00,000</b></div>
-            <div><small>Paid-up</small><b>₹81,57,000</b></div>
+            <div><small>Authorised</small><b>&#8377;1,00,00,000</b></div>
+            <div><small>Paid-up</small><b>&#8377;81,57,000</b></div>
             <div><small>Class</small><b>Public, limited by shares</b></div>
             <div><small>Listing</small><b>Unlisted</b></div>
           </div>
         </div>
-        <div class="card" data-tilt="5">
+        <div class="card" style="margin-top:16px">
           <h3 style="margin-top:0">Documents available on request</h3>
           <ul class="doc-list">
-            <li><div><b>Company report &amp; FSSAI licence dossier</b><span>PDF · issued 10 Oct 2024 · verified download</span></div><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></li>
-            <li><div><b>Annual return &amp; balance sheet</b><span>Filed with RoC Delhi · last AGM 30 Dec 2023</span></div><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></li>
-            <li><div><b>Certificate of incorporation</b><span>22 Dec 1995 · CIN U74899DL1995PLC072664</span></div><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></li>
+            <li><div><b>Company report &amp; FSSAI licence dossier</b><span>PDF &middot; issued 10 Oct 2024 &middot; verified download</span></div><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></li>
+            <li><div><b>Annual return &amp; balance sheet</b><span>Filed with RoC Delhi &middot; last AGM 30 Dec 2023</span></div><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></li>
+            <li><div><b>Certificate of incorporation</b><span>22 Dec 1995 &middot; CIN U74899DL1995PLC072664</span></div><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></li>
           </ul>
         </div>
-        <div class="card" data-tilt="5">
+        <div class="card" style="margin-top:16px">
           <h3 style="margin-top:0">Recent performance</h3>
           <p>For the year ended March 2025, net profit rose sharply year-on-year while total revenue and EBITDA eased modestly as the company invested in its organic and direct-to-consumer lines. Detailed statements are shared with verified requesters.</p>
         </div>
       </aside>
     </div>
 
-    <!-- Inline PDF viewer (revealed after verification) -->
     <div class="container">
       <div class="pdf-viewer" id="pdfViewer">
-        <div class="pdf-viewer__bar"><span>Aeon Cereals Limited · Company report</span><a data-pdf href="#" target="_blank" rel="noopener" style="color:var(--gold-400);font-weight:700">Open in new tab ↗</a></div>
+        <div class="pdf-viewer__bar"><span>Aeon Cereals Limited &middot; Company report</span><a data-pdf href="#" target="_blank" rel="noopener">Open in new tab</a></div>
         <iframe title="Aeon Cereals company report"></iframe>
       </div>
     </div>
   </section>
 
-  <!-- Simulated SMS -->
   <div class="sms-toast" id="smsToast" role="status" aria-live="polite">
-    <header><i></i> SMS · AEONCL <button type="button" style="margin-left:auto;color:var(--ink-300)" aria-label="Dismiss">✕</button></header>
+    <header><i></i> SMS &middot; AEONCL <button type="button" style="margin-left:auto;color:rgba(255,255,255,.6)" aria-label="Dismiss">&times;</button></header>
     <p></p><b></b>
   </div>
 </main>

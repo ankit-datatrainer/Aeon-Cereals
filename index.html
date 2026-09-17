@@ -5,58 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aeon Cereals Limited — Purity is Life</title>
 <meta name="description" content="Aeon Cereals Limited, New Delhi — a public limited company established in 1995 and the house behind the 4K Natural range of dry fruits, spices, pulses, oils, ghee and organic staples.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='22' fill='%230b1f16'/%3E%3Cpath d='M24 8c4 6 6 11 6 16s-2 10-6 16c-4-6-6-11-6-16s2-10 6-16Z' fill='%23c9a24a'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23D2AB67'/%3E%3Cpath d='M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <main data-speech="Welcome to Aeon Cereals Limited. Purity is life. We are a public limited company established in New Delhi in 1995, and the house behind the 4K Natural range of dry fruits, spices, pulses, oils, ghee and organic staples.">
 
-  <!-- HERO -->
+  <!-- HERO — video -->
   <section class="hero">
-    <div class="hero__bg"></div>
-    <canvas id="hero3d" aria-hidden="true"></canvas>
-    <div class="hero__grain"></div>
+    <div class="hero__media">
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80">
+        <source src="assets/hero_video.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="container hero__content">
-      <span class="eyebrow" style="color:var(--gold-400)">Aeon Cereals Limited · Est. 1995</span>
-      <h1 style="margin-top:22px">Purity is Life.</h1>
-      <p class="lead">From the grain fields of India to the kitchens of the nation. For three decades Aeon Cereals has sourced, tested and packed natural food with one promise: nothing artificial, ever.</p>
+      <span class="eyebrow">Aeon Cereals Limited &middot; Est. 1995</span>
+      <h1>Purity is Life</h1>
+      <div class="hero__rule"></div>
+      <p class="lead">From the grain fields of India to the kitchens of the nation. For three decades we have sourced, tested and packed natural food with one promise: nothing artificial, ever.</p>
       <div class="hero__actions">
-        <a class="btn btn--light" href="history.html">Our Story <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--outline" href="products.html">Explore Products</a>
-      </div>
-      <div class="hero__meta">
-        <div><b><span data-count="30" data-suffix="+">0</span></b><span>Years of trust</span></div>
-        <div><b><span data-count="26">0</span></b><span>FSSAI-licensed lines</span></div>
-        <div><b><span data-count="11">0</span></b><span>Product categories</span></div>
-        <div><b>ISO</b><span>9001 · 22000 certified</span></div>
+        <a class="btn btn--light" href="history.html">our history <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--light" href="products.html">our products <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
+    <button class="hero__mute" id="heroMute" aria-label="Unmute video"></button>
     <div class="hero__scroll"><span>Scroll</span><i></i></div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee section--cream">
-    <div class="marquee__track">
-      <span>Dry Fruits</span><span>Spices</span><span>Pulses &amp; Rice</span><span>Cold-pressed Oils</span><span>Pure Ghee</span><span>Herbal Tea</span><span>Organic Staples</span><span>Mukhwas</span><span>Dhoop &amp; Agarbatti</span><span>Wellness</span>
-      <span>Dry Fruits</span><span>Spices</span><span>Pulses &amp; Rice</span><span>Cold-pressed Oils</span><span>Pure Ghee</span><span>Herbal Tea</span><span>Organic Staples</span><span>Mukhwas</span><span>Dhoop &amp; Agarbatti</span><span>Wellness</span>
+  <!-- STATEMENT BAND -->
+  <section class="section section--tight section--cream center">
+    <div class="container" data-reveal="up">
+      <span class="eyebrow" style="margin-bottom:22px">We care</span>
+      <p class="serif-lg" style="max-width:24ch;margin-inline:auto">Aeon Cereals Limited is a public limited company and one of Delhi's enduring natural food houses.</p>
     </div>
-  </div>
+  </section>
+
+  <!-- BUSINESSES (RIL pattern: image left, switchable list right) -->
+  <section class="biz">
+    <div class="biz__bg">
+      <img class="is-active" src="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=1700&q=80" alt="Premium dry fruits and nuts">
+      <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1700&q=80" alt="Indian spices">
+      <img src="https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=1700&q=80" alt="Pulses and grains">
+      <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1700&q=80" alt="Cold-pressed oils">
+      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1700&q=80" alt="Certified organic produce">
+    </div>
+    <div class="container">
+      <div class="biz__copy"></div>
+      <ul class="biz__list">
+        <li class="is-active"><button type="button"
+          data-title="Dry Fruits &amp; Nuts"
+          data-text="Raisins, pistachios, dates, dried apricots and mixed nuts, graded and repacked under our FSSAI licence. This is the range that built the company and it remains our flagship."
+          data-link="https://4knatural.peculiex.com/products?category=dry-fruits">Dry Fruits &amp; Nuts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+        <li><button type="button"
+          data-title="Spices"
+          data-text="Turmeric, cumin, coriander, cardamom, cloves, chilli, dried mango powder and blended masalas. Ten licensed spice lines, whole and ground, with nothing added for colour."
+          data-link="https://4knatural.peculiex.com/products?category=spices">Spices <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+        <li><button type="button"
+          data-title="Pulses, Rice &amp; Flours"
+          data-text="Masur, urad, moong, chana, rajma, lobia and moth bean, alongside rice, oats, soyabean, atta, maida, suji, besan and multigrain flour. The everyday staples of the Indian kitchen."
+          data-link="https://4knatural.peculiex.com/products?category=pulses-rice">Pulses, Rice &amp; Flours <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+        <li><button type="button"
+          data-title="Oils &amp; Ghee"
+          data-text="Cold-pressed oils and slow-cooked pure ghee, the way earlier generations cooked. Packed and labelled to the letter of the edible oil regulations."
+          data-link="https://4knatural.peculiex.com/products?category=oils">Oils &amp; Ghee <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+        <li><button type="button"
+          data-title="Organic &amp; Wellness"
+          data-text="A certified organic tier of oil, pulses, spices and wheat grown without fertilisers or pesticides, joined by chia, multigrain and herbal teas for everyday wellness."
+          data-link="https://4knatural.peculiex.com/products?category=organic-products">Organic &amp; Wellness <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="section section--tight section--blue">
+    <div class="container">
+      <div class="stats" data-stagger="up">
+        <div class="stat"><b><span data-count="30" data-suffix="+">0</span></b><span>Years in operation</span></div>
+        <div class="stat"><b><span data-count="26">0</span></b><span>Licensed product lines</span></div>
+        <div class="stat"><b><span data-count="11">0</span></b><span>Consumer categories</span></div>
+        <div class="stat"><b><span data-count="14">0</span></b><span>Wholesale food categories</span></div>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT SPLIT -->
   <section class="section">
     <div class="container split">
       <div class="split__media" data-reveal="left">
-        <div class="frame" data-clip="left">
-          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Golden wheat field at harvest" onerror="this.style.display='none'">
-          <span class="frame__tag">Farm direct · Since 1995</span>
+        <div class="frame frame--wide" data-clip="left">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1300&q=80" alt="Golden wheat field at harvest">
+          <span class="frame__tag">Farm direct &middot; Since 1995</span>
         </div>
-        <div class="float-card" data-reveal="up" data-delay=".4"><b>1995</b><span>Incorporated in New Delhi</span></div>
+        <div class="float-stat" data-reveal="up" data-delay=".35"><b>1995</b><span>Incorporated in New Delhi</span></div>
       </div>
       <div class="split__body" data-reveal="right">
-        <span class="eyebrow">Who we are</span>
-        <h2 data-split>Three decades of natural food, done properly.</h2>
+        <span class="kicker">Who we are</span>
+        <h2 data-split>Three decades of natural food, done properly</h2>
+        <div class="rule"></div>
         <p class="lead">Aeon Cereals Limited is an unlisted public company registered with the Registrar of Companies, Delhi. What began as a cereals and pulses house in 1995 has grown into a multi-category natural foods enterprise.</p>
         <p>Under our consumer brand <strong>4K Natural</strong>, we repack, wholesale and distribute dry fruits, spices, flours, pulses, oils, ghee, teas and organic staples from an FSSAI-licensed facility in Rohini, North-West Delhi. Every batch is checked, not treated.</p>
         <ul class="checklist">
@@ -64,110 +111,95 @@
           <li>ISO 9001:2015 and ISO 22000 certified operations</li>
           <li>Sourced from Indian growers, lab-tested batch by batch</li>
         </ul>
-        <a class="link-arrow mt-3" href="history.html">Read our history <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn mt-3" href="history.html">read more <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- BUSINESS TILES -->
-  <section class="section section--dark">
-    <div class="container">
-      <div class="section-head">
-        <div data-reveal="left"><span class="eyebrow">Our businesses</span><h2>What we bring to the table</h2></div>
-        <a class="link-arrow" href="products.html" data-reveal="right">All categories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <div class="tiles" data-stagger="up">
-        <a class="tile tile--big" href="https://4knatural.peculiex.com/products?category=dry-fruits" target="_blank" rel="noopener" data-tilt="5">
-          <img src="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=1000&q=80" alt="Assorted premium nuts and dry fruits" onerror="this.style.display='none'">
-          <div class="tile__body"><span class="eyebrow">Flagship</span><h3>Dry Fruits &amp; Nuts</h3><p>Raisins, pistachios, dates, apricots and mixed nuts, graded and packed under our FSSAI licence.</p><span class="link-arrow">Shop the range ↗</span></div>
-        </a>
-        <a class="tile" href="https://4knatural.peculiex.com/products?category=spices" target="_blank" rel="noopener" data-tilt="5">
-          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80" alt="Whole and ground Indian spices" onerror="this.style.display='none'">
-          <div class="tile__body"><span class="eyebrow">Kitchen</span><h3>Spices</h3><p>Turmeric, cumin, coriander, cardamom, cloves, chilli, amchur and blended masalas.</p></div>
-        </a>
-        <a class="tile" href="https://4knatural.peculiex.com/products?category=pulses-rice" target="_blank" rel="noopener" data-tilt="5">
-          <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80" alt="Rice grains" onerror="this.style.display='none'">
-          <div class="tile__body"><span class="eyebrow">Staples</span><h3>Pulses &amp; Rice</h3><p>Masur, urad, moong, chana, rajma, rice, oats, atta, besan and multigrain flours.</p></div>
-        </a>
-        <a class="tile" href="https://4knatural.peculiex.com/products?category=oils" target="_blank" rel="noopener" data-tilt="5">
-          <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=800&q=80" alt="Cold-pressed oil" onerror="this.style.display='none'">
-          <div class="tile__body"><span class="eyebrow">Wellness</span><h3>Oils &amp; Ghee</h3><p>Cold-pressed oils and pure ghee, the way our grandparents cooked.</p></div>
-        </a>
-        <a class="tile" href="https://4knatural.peculiex.com/products?category=organic-products" target="_blank" rel="noopener" data-tilt="5">
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" alt="Organic produce" onerror="this.style.display='none'">
-          <div class="tile__body"><span class="eyebrow">Certified</span><h3>Organic Products</h3><p>Organic oils, pulses, spices and wheat grown without fertilisers or pesticides.</p></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- NUMBERS -->
-  <section class="section section--dark" style="padding-top:0">
-    <div class="container">
-      <div class="stats" data-stagger="scale">
-        <div class="stat"><b><span data-count="1995">0</span></b><span>Year incorporated</span></div>
-        <div class="stat"><b>₹<span data-count="1">0</span> Cr</b><span>Authorised capital</span></div>
-        <div class="stat"><b>₹<span data-count="81.57">0</span> L</b><span>Paid-up capital</span></div>
-        <div class="stat"><b><span data-count="3">0</span></b><span>Board members</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROMISE (Reliance-style tabs replaced by 3 pillars) -->
+  <!-- FEATURE CARD ON CREAM (Foundation pattern) -->
   <section class="section section--cream">
     <div class="container">
-      <div class="center" data-reveal="up"><span class="eyebrow" style="justify-content:center">Our promise</span><h2 data-split>Everything nature intended. Nothing it didn't.</h2></div>
-      <div class="grid grid-3 mt-4" data-stagger="flip">
-        <div class="card" data-tilt="8"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-4 4-7 6-7 11a7 7 0 0 0 14 0c0-5-3-7-7-11Z"/><path d="M12 21V11"/></svg></div><h3>Purity first</h3><p>No artificial colour, flavour or preservative in anything we pack. Grown without fertilisers or pesticides wherever certified organic.</p></div>
-        <div class="card" data-tilt="8"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><h3>Farm direct</h3><p>Sourced from Indian growers and cooperatives, cutting out middlemen so farmers earn more and you pay for quality, not logistics.</p></div>
-        <div class="card" data-tilt="8"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6v6l4 9a2 2 0 0 1-2 3H7a2 2 0 0 1-2-3l4-9Z"/><path d="M8 15h8"/></svg></div><h3>Quality assured</h3><p>Checked, not treated. Every batch is lab-tested under our ISO 22000 food-safety system before it reaches a shelf.</p></div>
+      <div class="feature" data-reveal="up">
+        <div class="feature__body">
+          <div class="brand" style="gap:12px;margin-bottom:22px">
+            <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#D2AB67"/><path d="M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z" fill="#fff"/></svg>
+            <span style="font-family:var(--font-display);font-size:1.6rem;line-height:1.1">4K Natural<small style="display:block;font-family:var(--font-body);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dark);margin-top:5px">The consumer brand of Aeon Cereals</small></span>
+          </div>
+          <p>Launched on the founding principle that nature holds the key to a healthier life, 4K Natural carries the company's promise to the household shelf. The range is ISO 9001:2015 and ISO 22000 certified, free of artificial colour and flavour, and lab-tested batch by batch.</p>
+          <a class="btn mt-3" style="align-self:flex-start" href="products.html">read more <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="feature__media">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1300&q=80" alt="Natural wholefoods arranged in bowls">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- LEADERSHIP TEASER -->
-  <section class="section">
+  <!-- BLUE PROMISE SECTION -->
+  <section class="section section--blue">
     <div class="container split is-flipped">
       <div class="split__media" data-reveal="right">
-        <div class="frame frame--square" data-clip="right">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="Leadership team in discussion" onerror="this.style.display='none'">
-          <span class="frame__tag">Governance</span>
+        <div class="frame frame--wide" data-clip="right">
+          <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1300&q=80" alt="Laboratory testing of food samples">
         </div>
       </div>
       <div class="split__body" data-reveal="left">
-        <span class="eyebrow">Leadership</span>
-        <h2 data-split>Steady hands, long horizons.</h2>
-        <p class="lead">Founder-Chairman Rajiv Goyal has led Aeon Cereals since incorporation, supported by a board that combines operational depth with a thirty-year record of compliance.</p>
-        <div class="grid grid-2 mt-3" style="gap:14px">
-          <a class="card" href="founder.html" data-tilt="6"><span class="eyebrow">Founder-Chairman</span><h3 style="margin:8px 0 4px">Rajiv Goyal</h3><p>Director since 1995 · DIN 00080455</p></a>
-          <a class="card" href="board.html" data-tilt="6"><span class="eyebrow">Board</span><h3 style="margin:8px 0 4px">Board of Directors</h3><p>Three directors, five committees</p></a>
-        </div>
+        <span class="kicker">Our promise</span>
+        <h2 data-split>Everything nature intended. Nothing it didn't.</h2>
+        <div class="rule"></div>
+        <p class="lead">Our commitment is simple and it has not changed since 1995. We do not improve on nature, we deliver it honestly, and we can prove it batch by batch.</p>
+        <p>Chemical and microbiological testing is carried out at NABL or FSSAI-recognised laboratories at least twice a year, and our production, raw-material and sales records are maintained daily as our licence requires.</p>
+        <a class="btn btn--light mt-3" href="committees.html">read more <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- NEWS -->
+  <!-- THREE PILLARS -->
+  <section class="section">
+    <div class="container">
+      <div class="center" data-reveal="up" style="margin-bottom:clamp(34px,4vw,58px)">
+        <span class="kicker">From soil to shelf</span>
+        <h2 data-split>Three steps. Zero shortcuts.</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="grid grid-3" data-stagger="up">
+        <div class="card"><div class="card__num">01</div><h3>Purity first</h3><p>No artificial colour, flavour or preservative in anything we pack. Where certified organic, grown without fertilisers or pesticides.</p></div>
+        <div class="card"><div class="card__num">02</div><h3>Farm direct</h3><p>Sourced from Indian growers and cooperatives, cutting out middlemen so farmers earn more and you pay for quality, not logistics.</p></div>
+        <div class="card"><div class="card__num">03</div><h3>Quality assured</h3><p>Checked, not treated. Every batch is lab-tested under our ISO 22000 food-safety system before it reaches a shelf.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span>Dry Fruits</span><span>Spices</span><span>Pulses &amp; Rice</span><span>Cold-pressed Oils</span><span>Pure Ghee</span><span>Herbal Tea</span><span>Organic Staples</span><span>Mukhwas</span><span>Dhoop &amp; Agarbatti</span><span>Wellness</span>
+      <span>Dry Fruits</span><span>Spices</span><span>Pulses &amp; Rice</span><span>Cold-pressed Oils</span><span>Pure Ghee</span><span>Herbal Tea</span><span>Organic Staples</span><span>Mukhwas</span><span>Dhoop &amp; Agarbatti</span><span>Wellness</span>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENTS -->
   <section class="section section--cream">
     <div class="container">
       <div class="section-head">
-        <div data-reveal="left"><span class="eyebrow">News &amp; media</span><h2>Announcements</h2></div>
+        <div data-reveal="left"><span class="kicker">News &amp; media</span><h2 data-split>Announcements</h2></div>
         <a class="link-arrow" href="news.html" data-reveal="right">All news <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="news-list" data-stagger="up">
-        <a class="news-item" href="news.html"><div class="date">10 Oct<small>2024</small></div><div><span class="cat">Regulatory</span><h3>FSSAI State Licence renewed through October 2025</h3><p>Licence 13322001000902 renewed for the Rohini repacking, wholesale and distribution facility.</p></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
-        <a class="news-item" href="news.html"><div class="date">Organic<small>range</small></div><div><span class="cat">Products</span><h3>4K Natural launches certified organic oils, pulses, spices and wheat</h3><p>A new organic tier joins the store, grown without fertilisers or pesticides.</p></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
-        <a class="news-item" href="news.html"><div class="date">Store<small>online</small></div><div><span class="cat">Digital</span><h3>4K Natural store goes online with eleven categories</h3><p>Dry fruits, spices, pulses, oils, ghee, teas, mukhwas, wellness and more, delivered nationwide.</p></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <a class="news-item" href="news.html"><div class="date">10 Oct<small>2024</small></div><div><span class="cat">Regulatory</span><h3>FSSAI State Licence renewed through October 2025</h3><p>Licence 13322001000902 renewed for the Rohini repacking, wholesale and distribution facility.</p></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="news-item" href="news.html"><div class="date">2024<small>Products</small></div><div><span class="cat">Products</span><h3>4K Natural launches certified organic oils, pulses, spices and wheat</h3><p>A new organic tier joins the store, grown without fertilisers or pesticides.</p></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="news-item" href="news.html"><div class="date">2024<small>Digital</small></div><div><span class="cat">Corporate</span><h3>4K Natural store goes online with eleven categories</h3><p>Dry fruits, spices, pulses, oils, ghee, teas, mukhwas, wellness and more, delivered nationwide.</p></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section--dark center">
-    <div class="container" data-reveal="scale">
-      <span class="eyebrow" style="justify-content:center;color:var(--gold-400)">Investors &amp; partners</span>
-      <h2 data-split>Request our company report.</h2>
-      <p class="lead" style="margin-top:16px">Verify your mobile number and receive the Aeon Cereals compliance and licence dossier instantly.</p>
-      <a class="btn btn--light mt-3" href="financials.html">Go to Financials <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <!-- CHAIRMAN QUOTE -->
+  <section class="section section--blue">
+    <div class="container quote" data-reveal="up">
+      <span class="quote__mark">&ldquo;</span>
+      <p>The one unifying thread through everything we have built at Aeon Cereals is a refusal to compromise on what goes into an Indian family's kitchen.</p>
+      <cite>Rajiv Goyal &middot; Chairman &amp; Managing Director</cite>
+      <div style="margin-top:30px"><a class="btn btn--light" href="chairman.html">read the message <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </section>
 </main>
@@ -175,8 +207,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="assets/js/site.js"></script>
-<script src="assets/js/hero3d.js"></script>
 </body>
 </html>
