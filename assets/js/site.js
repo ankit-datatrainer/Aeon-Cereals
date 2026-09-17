@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const SHOP = 'https://4knatural.peculiex.com/products';
+  const SHOP = 'https://4knatural.com/products';
   const PRODUCTS = [
     { name: 'Dhoop & Agarbatti', slug: 'dhoop-agarbatti' },
     { name: 'Dry Fruits', slug: 'dry-fruits' },
