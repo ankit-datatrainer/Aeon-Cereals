@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Financials — Aeon Cereals Limited</title>
 <meta name="description" content="Request the Aeon Cereals Limited company report. Verify your mobile number with an OTP and the report opens instantly.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23D2AB67'/%3E%3Cpath d='M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23E09A2E'/%3E%3Cpath d='M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=20260930b">
 </head>
 <body>
 <main data-speech="Financials. Aeon Cereals Limited has an authorised capital of one crore rupees and paid-up capital of eighty one point five seven lakh rupees. To receive the company report, enter your name, email and mobile number, request an OTP, verify it, and the report opens as a PDF.">
@@ -25,11 +25,13 @@
     <div class="container">
       <a href="index.html">Home</a>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      <span>Investors</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
       <b>Financials</b>
     </div>
   </div>
 
-  <section class="section section--tight section--blue">
+  <section class="section section--tight section--brand">
     <div class="container">
       <div class="stats" data-stagger="up">
         <div class="stat"><b>&#8377;<span data-count="1">0</span> Cr</b><span>Authorised capital</span></div>
@@ -58,7 +60,7 @@
             <div class="field"><label for="fPhone">Mobile number</label>
               <div class="field-row"><input type="text" value="+91" disabled aria-label="Country code"><input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10-digit number"></div><span class="err"></span></div>
             <div class="field"><label for="fCompany">Organisation <span style="opacity:.5;text-transform:none;letter-spacing:0">(optional)</span></label><input id="fCompany" name="company" type="text" autocomplete="organization" placeholder="Company / institution"></div>
-            <label style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--ink-mid);margin:6px 0 4px"><input type="checkbox" name="consent" style="margin-top:5px;accent-color:var(--blue)"> <span>I agree to be contacted by Aeon Cereals Limited regarding this request and accept that my details will be stored for compliance purposes.</span></label>
+            <label style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--ink-mid);margin:6px 0 4px"><input type="checkbox" name="consent" style="margin-top:5px;accent-color:var(--brand)"> <span>I agree to be contacted by Aeon Cereals Limited regarding this request and accept that my details will be stored for compliance purposes.</span></label>
             <span class="err" id="consentErr" style="display:block;font-size:.76rem;color:var(--down);min-height:1.2em;margin-bottom:12px"></span>
             <button class="btn btn--solid btn--block" type="submit"><span>Request OTP</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
@@ -138,7 +140,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/financials.js"></script>
+<script src="assets/js/site.js?v=20260930"></script>
+<script src="assets/js/financials.js?v=20260930"></script>
 </body>
 </html>

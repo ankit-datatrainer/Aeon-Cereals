@@ -4,22 +4,22 @@ Static corporate site (HTML, CSS, vanilla JavaScript) for **Aeon Cereals Limited
 
 ## Pages
 
-| Page | File |
-|------|------|
-| Home | `index.html` |
-| About → Our History | `history.html` |
-| About → Founder-Chairman | `founder.html` |
-| About → Chairman & Managing Director | `chairman.html` |
-| About → Board of Directors | `board.html` |
-| About → Board Committees | `committees.html` |
-| Products (dropdown links to the 4K Natural store) | `products.html` |
-| Financials (OTP-gated PDF) | `financials.html` |
-| Registered Offices | `offices.html` |
-| News / Media | `news.html` |
+| Navigation | Page | File |
+|---|---|---|
+| Home | Home | `index.html` |
+| About | Our History, Founder-Chairman, Chairman & MD, Board of Directors, Board Committees | `history.html`, `founder.html`, `chairman.html`, `board.html`, `committees.html` |
+| Business → FMCG → 4K Natural | Brand overview; product links open 4knatural.com | `products.html` |
+| Investors → Financials | OTP-gated company report | `financials.html` |
+| News & Media | Announcements and press | `news.html` |
+| Careers | Open roles and application form | `careers.html` |
+| Become a Distributor | Distributor application form | `distributor.html` |
+| Footer | Registered Office | `offices.html` |
 
 ## Design system
 
-Modelled on ril.com. Colours sampled from the live Reliance site: blue `#053C8F`, gold `#D2AB67`, cream `#FDF2DF`, ink `#373F41`. Type: **Playfair Display** for headings (same as Reliance) and **Figtree** for body, standing in for Reliance's proprietary JioType.
+Palette "Harvest Maroon": maroon `#6B1D2B`, saffron `#E09A2E`, warm ivory `#FAF5EC`, charcoal `#2B2522`. Tokens live in `:root` in `assets/css/style.css` as `--brand`, `--accent`, `--surface` and `--ink`.
+
+Type: **Google Sans**, with **Karla** and **Work Sans** as fallbacks.
 
 ## Features
 
@@ -30,6 +30,12 @@ Modelled on ril.com. Colours sampled from the live Reliance site: blue `#053C8F`
 - Voice dock (bottom-left): **speaker** reads the current page aloud (Web Speech API); **mic** accepts commands such as "open products", "go to history", "read this page", "stop".
 - Financials: details form → Request OTP → simulated SMS shows the demo OTP → 6-box OTP entry → success → `assets/docs/AEON-2.pdf` opens in a new tab and inline.
 - Fully responsive (mobile, tablet, desktop).
+
+- Careers and Become a Distributor forms share `assets/js/forms.js`: field validation (Indian mobile, PIN code, GSTIN, email, CV type and size), an error summary, a loading state and a success panel with a reference number.
+
+## Form submissions
+
+The Careers and Distributor forms validate and confirm on screen but do not yet send data anywhere. Connect the `submit()` function in `assets/js/forms.js` to an email service or API before going live.
 
 ## Demo OTP
 

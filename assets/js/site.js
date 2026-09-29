@@ -33,12 +33,13 @@
 
   const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const extIcon = '<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+  const chevRight = '<svg class="chev-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>';
   const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>';
 
   /* Gold flame-and-grain mark, in the spirit of a corporate seal */
   const logo = `
     <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <circle cx="32" cy="32" r="30" fill="#D2AB67"/>
+      <circle cx="32" cy="32" r="30" fill="#E09A2E"/>
       <path d="M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z" fill="#fff"/>
       <path d="M44 40c4-1 8-4 9-9-4 1-7 3-9 9Z" fill="#fff" opacity=".85"/>
     </svg>`;
@@ -46,9 +47,11 @@
   /* ---------- Header ---------- */
   function buildHeader() {
     const aboutLinks = ABOUT.map(a => `<a href="${a.href}"><span>${a.name}</span><small>${a.tag}</small></a>`).join('');
-    const prodLinks = PRODUCTS.map(p => `<a href="${SHOP}?category=${p.slug}" target="_blank" rel="noopener"><span>${p.name}</span>${p.soon ? '<small>Coming soon</small>' : extIcon}</a>`).join('');
+    const prodLinks = PRODUCTS.map(p => `<a href="${SHOP}?category=${p.slug}" target="_blank" rel="noopener"><span>${p.name}</span>${p.soon ? '<small>Soon</small>' : extIcon}</a>`).join('');
 
     const isAbout = ['history.html', 'founder.html', 'chairman.html', 'board.html', 'committees.html'].includes(page);
+    const isBusiness = page === 'products.html';
+    const isInvestors = page === 'financials.html';
     const act = h => page === h ? ' class="is-active"' : '';
 
     document.body.insertAdjacentHTML('afterbegin', `
@@ -57,10 +60,10 @@
         <div class="topbar__stats">
           <span>FSSAI <b>13322001000902</b></span>
           <span>CIN <b>U74899DL1995PLC072664</b></span>
-          <span>ISO <b>9001:2015 &amp; 22000</b><i>&#9650;</i></span>
+          <span>ISO <b>9001:2015 &amp; 22000</b></span>
         </div>
         <div class="topbar__links">
-          <a href="offices.html">Contact Us</a>
+          <a href="offices.html">Registered Office</a>
           <a href="${SHOP}" target="_blank" rel="noopener">Shop 4K Natural</a>
         </div>
       </div>
@@ -72,16 +75,33 @@
           <ul class="nav">
             <li class="has-drop${isAbout ? ' is-active' : ''}"><button type="button" aria-haspopup="true">About ${chev}</button>
               <div class="dropdown">${aboutLinks}</div></li>
-            <li class="has-drop${page === 'products.html' ? ' is-active' : ''}"><button type="button" aria-haspopup="true">Products ${chev}</button>
-              <div class="dropdown dropdown--wide"><div class="dropdown__head">4K Natural range &middot; opens the store</div>${prodLinks}<a href="products.html" style="grid-column:1/-1;background:var(--cream)"><span>View product overview</span><small>On this site</small></a></div></li>
-            <li${act('board.html')}><a href="board.html">Board of Directors</a></li>
-            <li${act('financials.html')}><a href="financials.html">Financials</a></li>
-            <li${act('offices.html')}><a href="offices.html">Registered Offices</a></li>
+            <li class="has-drop${isBusiness ? ' is-active' : ''}"><button type="button" aria-haspopup="true">Business ${chev}</button>
+              <div class="dropdown dropdown--mega">
+                <div class="mega__sectors">
+                  <div class="dropdown__head">Our businesses</div>
+                  <span class="mega__sector is-current">FMCG ${chevRight}</span>
+                </div>
+                <div class="mega__brand">
+                  <div class="dropdown__head">FMCG &middot; Brands</div>
+                  <a class="mega__brandcard" href="products.html">
+                    <b>4K Natural</b>
+                    <span>Dry fruits, spices, pulses, oils, ghee, teas and certified organic staples.</span>
+                    <small>View the brand &rarr;</small>
+                  </a>
+                </div>
+                <div class="mega__products">
+                  <div class="dropdown__head">4K Natural products &middot; opens the store</div>
+                  <div class="mega__grid">${prodLinks}</div>
+                </div>
+              </div></li>
+            <li class="has-drop${isInvestors ? ' is-active' : ''}"><button type="button" aria-haspopup="true">Investors ${chev}</button>
+              <div class="dropdown"><a href="financials.html"><span>Financials</span><small>Reports</small></a></div></li>
             <li${act('news.html')}><a href="news.html">News &amp; Media</a></li>
+            <li${act('careers.html')}><a href="careers.html">Careers</a></li>
+            <li class="nav__cta${page === 'distributor.html' ? ' is-active' : ''}"><a href="distributor.html">Become a Distributor</a></li>
           </ul>
         </nav>
         <div class="header__cta">
-          <a class="btn" href="${SHOP}" target="_blank" rel="noopener">Shop 4K Natural</a>
           <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
@@ -89,14 +109,17 @@
     <div class="mobile-menu" id="mobileMenu">
       <ul>
         <li><button type="button">About <span>+</span></button><div class="sub">${ABOUT.map(a => `<a href="${a.href}">${a.name}</a>`).join('')}</div></li>
-        <li><button type="button">Products <span>+</span></button><div class="sub">${PRODUCTS.map(p => `<a href="${SHOP}?category=${p.slug}" target="_blank" rel="noopener">${p.name}${p.soon ? '<small>Coming soon</small>' : '<small>&#8599;</small>'}</a>`).join('')}<a href="products.html">Product overview</a></div></li>
-        <li><a href="board.html">Board of Directors</a></li>
-        <li><a href="financials.html">Financials</a></li>
-        <li><a href="offices.html">Registered Offices</a></li>
+        <li><button type="button">Business <span>+</span></button><div class="sub">
+          <p class="sub__label">FMCG</p>
+          <a href="products.html"><strong>4K Natural</strong><small>Brand</small></a>
+          ${PRODUCTS.map(p => `<a class="sub__indent" href="${SHOP}?category=${p.slug}" target="_blank" rel="noopener">${p.name}${p.soon ? '<small>Soon</small>' : '<small>&#8599;</small>'}</a>`).join('')}
+        </div></li>
+        <li><button type="button">Investors <span>+</span></button><div class="sub"><a href="financials.html">Financials</a></div></li>
         <li><a href="news.html">News &amp; Media</a></li>
-        <li><a href="${SHOP}" target="_blank" rel="noopener">Shop 4K Natural</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="distributor.html">Become a Distributor</a></li>
       </ul>
-      <p class="mobile-menu__foot">Aeon Cereals Limited &middot; Shop No. 18, CSC-6, Sector 9, Rohini, New Delhi 110085</p>
+      <p class="mobile-menu__foot"><a href="offices.html">Registered Office</a> &middot; Shop No. 18, CSC-6, Sector 9, Rohini, New Delhi 110085</p>
     </div>`);
   }
 
@@ -113,16 +136,17 @@
           </div>
           <div><h4>About</h4><ul>${ABOUT.map(a => `<li><a href="${a.href}">${a.name}</a></li>`).join('')}</ul></div>
           <div><h4>Company</h4><ul>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="financials.html">Financials</a></li>
-            <li><a href="offices.html">Registered Offices</a></li>
+            <li><a href="products.html">Business &middot; 4K Natural</a></li>
+            <li><a href="financials.html">Investors &middot; Financials</a></li>
             <li><a href="news.html">News &amp; Media</a></li>
-            <li><a href="${SHOP}" target="_blank" rel="noopener">4K Natural Store</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="distributor.html">Become a Distributor</a></li>
           </ul></div>
-          <div><h4>Contact</h4><ul>
-            <li>Shop No. 18, CSC-6, Sector 9,<br>Rohini, New Delhi 110085</li>
+          <div><h4>Registered Office</h4><ul>
+            <li><a href="offices.html">Shop No. 18, CSC-6, Sector 9,<br>Rohini, New Delhi 110085</a></li>
             <li><a href="mailto:info@aeoncereals.com">info@aeoncereals.com</a></li>
             <li><a href="tel:+919560969531">+91 95609 69531</a></li>
+            <li><a class="footer__more" href="offices.html">View office &amp; map &rarr;</a></li>
           </ul></div>
         </div>
         <div class="footer__bottom">
@@ -552,8 +576,8 @@
     const routes = [
       [/home|start|main page/, 'index.html'], [/history/, 'history.html'], [/founder/, 'founder.html'],
       [/managing director|chairman/, 'chairman.html'], [/committee/, 'committees.html'], [/board|director/, 'board.html'],
-      [/financ|report|otp/, 'financials.html'], [/office|address|contact|location/, 'offices.html'], [/news|media|press/, 'news.html'],
-      [/product|catalog/, 'products.html']
+      [/career|job|hiring|vacanc/, 'careers.html'], [/distribut|dealer|partner/, 'distributor.html'], [/financ|report|otp|investor/, 'financials.html'], [/office|address|contact|location/, 'offices.html'], [/news|media|press/, 'news.html'],
+      [/product|catalog|business|fmcg|4k/, 'products.html']
     ];
     function handleCommand(txt) {
       const t = txt.toLowerCase();
