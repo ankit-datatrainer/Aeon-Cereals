@@ -23,13 +23,22 @@
   window.AEON_PRODUCTS = PRODUCTS;
   window.AEON_SHOP = SHOP;
 
-  const ABOUT = [
+  const ABOUT_COMPANY = [
     { name: 'Our History', href: 'history.html', tag: 'Since 1995' },
     { name: 'Founder-Chairman', href: 'founder.html', tag: 'Leadership' },
     { name: 'Chairman & Managing Director', href: 'chairman.html', tag: 'Leadership' },
     { name: 'Board of Directors', href: 'board.html', tag: 'Governance' },
     { name: 'Board Committees', href: 'committees.html', tag: 'Governance' }
   ];
+  const ABOUT_RD = [
+    { name: 'Research & Technology Development', href: 'research.html', desc: 'Food-safety science, testing and process technology' },
+    { name: 'Innovation', href: 'innovation.html', desc: 'Clean-label products, packaging and digital' }
+  ];
+  const ABOUT_IMPACT = [
+    { name: 'Aeon Research Foundation', href: 'foundation.html', desc: 'Farmer livelihoods, nutrition and food-science research' }
+  ];
+  const ABOUT = [...ABOUT_COMPANY, ...ABOUT_RD, ...ABOUT_IMPACT];
+  const BRAND_NAME = 'Aeon Cereals Limited';
 
   const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const extIcon = '<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>';
@@ -46,10 +55,23 @@
 
   /* ---------- Header ---------- */
   function buildHeader() {
-    const aboutLinks = ABOUT.map(a => `<a href="${a.href}"><span>${a.name}</span><small>${a.tag}</small></a>`).join('');
+    const cur = h => page === h ? ' class="is-current" aria-current="page"' : '';
+    const aboutMenu = `
+                <div class="about__company">
+                  <div class="dropdown__head">The Company</div>
+                  ${ABOUT_COMPANY.map(a => `<a href="${a.href}"${cur(a.href)}><span>${a.name}</span></a>`).join('')}
+                </div>
+                <div class="about__rdcol">
+                  <div class="dropdown__head">Research &amp; Development</div>
+                  ${ABOUT_RD.map(a => `<a class="about__rd${page === a.href ? ' is-current' : ''}" href="${a.href}"><b>${a.name}</b><span>${a.desc}</span></a>`).join('')}
+                </div>
+                <div class="about__impact">
+                  <div class="dropdown__head">Our Impact</div>
+                  ${ABOUT_IMPACT.map(a => `<a class="about__card" href="${a.href}"><b>${a.name}</b><span>${a.desc}</span><small>Explore the Foundation &rarr;</small></a>`).join('')}
+                </div>`;
     const prodLinks = PRODUCTS.map(p => `<a href="${SHOP}?category=${p.slug}" target="_blank" rel="noopener"><span>${p.name}</span>${p.soon ? '<small>Soon</small>' : extIcon}</a>`).join('');
 
-    const isAbout = ['history.html', 'founder.html', 'chairman.html', 'board.html', 'committees.html'].includes(page);
+    const isAbout = ABOUT.some(a => a.href === page);
     const isBusiness = page === 'products.html';
     const isInvestors = page === 'financials.html';
     const act = h => page === h ? ' class="is-active"' : '';
@@ -70,11 +92,11 @@
     </div>
     <header class="header" id="header">
       <div class="container--wide">
-        <a class="brand" href="index.html" aria-label="Aeon Cereals Limited home">${logo}<span class="brand__name">Aeon Cereals<small>Limited &middot; Purity is Life</small></span></a>
+        <a class="brand" href="index.html" aria-label="Aeon Cereals Limited home">${logo}<span class="brand__name">${BRAND_NAME}</span></a>
         <nav aria-label="Primary">
           <ul class="nav">
             <li class="has-drop${isAbout ? ' is-active' : ''}"><button type="button" aria-haspopup="true">About ${chev}</button>
-              <div class="dropdown">${aboutLinks}</div></li>
+              <div class="dropdown dropdown--about">${aboutMenu}</div></li>
             <li class="has-drop${isBusiness ? ' is-active' : ''}"><button type="button" aria-haspopup="true">Business ${chev}</button>
               <div class="dropdown dropdown--mega">
                 <div class="mega__sectors">
@@ -108,7 +130,14 @@
     </header>
     <div class="mobile-menu" id="mobileMenu">
       <ul>
-        <li><button type="button">About <span>+</span></button><div class="sub">${ABOUT.map(a => `<a href="${a.href}">${a.name}</a>`).join('')}</div></li>
+        <li><button type="button">About <span>+</span></button><div class="sub">
+          <p class="sub__label">The Company</p>
+          ${ABOUT_COMPANY.map(a => `<a class="sub__indent" href="${a.href}">${a.name}</a>`).join('')}
+          <p class="sub__label">Research &amp; Development</p>
+          ${ABOUT_RD.map(a => `<a class="sub__indent" href="${a.href}">${a.name}</a>`).join('')}
+          <p class="sub__label">Our Impact</p>
+          ${ABOUT_IMPACT.map(a => `<a class="sub__indent" href="${a.href}">${a.name}</a>`).join('')}
+        </div></li>
         <li><button type="button">Business <span>+</span></button><div class="sub">
           <p class="sub__label">FMCG</p>
           <a href="products.html"><strong>4K Natural</strong><small>Brand</small></a>
@@ -130,11 +159,13 @@
       <div class="container">
         <div class="footer__grid">
           <div>
-            <a class="brand" href="index.html">${logo}<span class="brand__name">Aeon Cereals<small>Limited &middot; Est. 1995</small></span></a>
+            <a class="brand" href="index.html">${logo}<span class="brand__name">${BRAND_NAME}</span></a>
+            <p class="footer__tag">Purity is Life &middot; Est. 1995</p>
             <p>A public limited company incorporated in New Delhi in 1995, and the house behind the 4K Natural range of dry fruits, spices, pulses, oils, ghee and organic staples.</p>
             <p style="margin-top:13px">CIN: U74899DL1995PLC072664<br>FSSAI: 13322001000902</p>
           </div>
-          <div><h4>About</h4><ul>${ABOUT.map(a => `<li><a href="${a.href}">${a.name}</a></li>`).join('')}</ul></div>
+          <div><h4>About</h4><ul>${ABOUT_COMPANY.map(a => `<li><a href="${a.href}">${a.name}</a></li>`).join('')}</ul>
+            <h4 class="footer__subhead">R&amp;D and Impact</h4><ul>${[...ABOUT_RD, ...ABOUT_IMPACT].map(a => `<li><a href="${a.href}">${a.name}</a></li>`).join('')}</ul></div>
           <div><h4>Company</h4><ul>
             <li><a href="products.html">Business &middot; 4K Natural</a></li>
             <li><a href="financials.html">Investors &middot; Financials</a></li>
@@ -174,7 +205,7 @@
     if (sessionStorage.getItem('aeon-loaded')) return null;
     const el = document.createElement('div');
     el.className = 'preloader';
-    el.innerHTML = `<div class="preloader__logo"><span>Aeon Cereals</span></div><div class="preloader__bar"><i></i></div><div class="preloader__count">000</div>`;
+    el.innerHTML = `<div class="preloader__logo"><span>${BRAND_NAME}</span></div><div class="preloader__bar"><i></i></div><div class="preloader__count">000</div>`;
     document.body.appendChild(el);
     const curtain = document.createElement('div');
     curtain.className = 'curtain';
@@ -205,6 +236,10 @@
       initCounters();
       initParallax();
       initTimeline();
+      initStatements();
+      initFlow();
+      initHScroll();
+      initTilt();
       initHeroIntro();
       document.dispatchEvent(new CustomEvent('aeon:ready'));
     };
@@ -473,6 +508,80 @@
     ScrollTrigger.refresh();
   }
 
+  /* ---------- Statement: words brighten as they scroll past ---------- */
+  function initStatements() {
+    const blocks = document.querySelectorAll('[data-highlight]');
+    if (!blocks.length) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { blocks.forEach(b => b.classList.add('no-js')); return; }
+    blocks.forEach(p => {
+      const words = p.textContent.trim().split(/\s+/);
+      p.setAttribute('aria-label', words.join(' '));
+      p.innerHTML = words.map(w => `<span class="hw">${w}</span>`).join(' ');
+      gsap.to(p.querySelectorAll('.hw'), {
+        opacity: 1, ease: 'none', stagger: .1,
+        scrollTrigger: { trigger: p, start: 'top 82%', end: 'bottom 48%', scrub: .5 }
+      });
+    });
+  }
+
+  /* ---------- Flow: process line draws and steps light up ---------- */
+  function initFlow() {
+    document.querySelectorAll('[data-flow]').forEach(flow => {
+      const steps = [...flow.querySelectorAll('.flow__step')];
+      flow.style.setProperty('--steps', steps.length);
+      const line = flow.querySelector('.flow__line i');
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { steps.forEach(s => s.classList.add('is-on')); return; }
+      const vertical = () => window.matchMedia('(max-width: 768px)').matches;
+      ScrollTrigger.create({
+        trigger: flow, start: 'top 75%', end: 'bottom 55%', scrub: .4,
+        onUpdate: self => {
+          const p = self.progress;
+          if (line) line.style.transform = vertical() ? `scaleY(${p})` : `scaleX(${p})`;
+          steps.forEach((s, i) => s.classList.toggle('is-on', p >= (steps.length === 1 ? 0 : i / (steps.length - 1)) - .02));
+        }
+      });
+      gsap.fromTo(steps, { y: 40, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 1, ease: 'expo.out', stagger: .1,
+        scrollTrigger: { trigger: flow, start: 'top 85%', toggleActions: 'play none none reverse' }
+      });
+    });
+  }
+
+  /* ---------- Horizontal pinned gallery (desktop), swipe row (touch) ---------- */
+  function initHScroll() {
+    document.querySelectorAll('[data-hscroll]').forEach(sec => {
+      const track = sec.querySelector('.hscroll__track');
+      const bar = sec.querySelector('.hscroll__progress i');
+      const desktop = window.matchMedia('(min-width: 1025px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!track || !desktop || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { sec.classList.add('is-native'); return; }
+      const dist = () => Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
+      gsap.to(track, {
+        x: () => -dist(), ease: 'none',
+        scrollTrigger: {
+          trigger: sec, start: () => 'top ' + (document.getElementById('header').offsetHeight || 0) + 'px', end: () => '+=' + dist(), pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1,
+          onUpdate: self => { if (bar) bar.style.transform = `scaleX(${self.progress})`; }
+        }
+      });
+      gsap.fromTo(track.children, { x: 120, opacity: 0 }, {
+        x: 0, opacity: 1, duration: 1.2, ease: 'expo.out', stagger: .08,
+        scrollTrigger: { trigger: sec, start: 'top 75%' }
+      });
+    });
+  }
+
+  /* ---------- 3D tilt on hover ---------- */
+  function initTilt() {
+    if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches || typeof gsap === 'undefined') return;
+    document.querySelectorAll('[data-tilt] > *').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        gsap.to(card, { rotateY: x * 8, rotateX: -y * 8, transformPerspective: 900, duration: .5, ease: 'power2.out' });
+      });
+      card.addEventListener('mouseleave', () => gsap.to(card, { rotateY: 0, rotateX: 0, duration: .8, ease: 'expo.out' }));
+    });
+  }
+
   /* ---------- Counters ---------- */
   function initCounters() {
     document.querySelectorAll('[data-count]').forEach(el => {
@@ -574,7 +683,8 @@
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     let rec = null, listening = false;
     const routes = [
-      [/home|start|main page/, 'index.html'], [/history/, 'history.html'], [/founder/, 'founder.html'],
+      [/home|start|main page/, 'index.html'], [/foundation|impact|csr|social/, 'foundation.html'], [/innovat/, 'innovation.html'],
+      [/research|technology|r and d|r&d|laborator|lab/, 'research.html'], [/history/, 'history.html'], [/founder/, 'founder.html'],
       [/managing director|chairman/, 'chairman.html'], [/committee/, 'committees.html'], [/board|director/, 'board.html'],
       [/career|job|hiring|vacanc/, 'careers.html'], [/distribut|dealer|partner/, 'distributor.html'], [/financ|report|otp|investor/, 'financials.html'], [/office|address|contact|location/, 'offices.html'], [/news|media|press/, 'news.html'],
       [/product|catalog|business|fmcg|4k/, 'products.html']
