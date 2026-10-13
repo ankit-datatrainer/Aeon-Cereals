@@ -1,7 +1,7 @@
 /* =====================================================================
-   AEON CEREALS — site engine (Reliance-style build)
+   AEON CEREALS — site engine
    Header/footer injection, preloader, smooth scroll, scroll reveals,
-   vertical timeline, business tabs, hero video, voice dock.
+   editorial chronicle, business tabs, hero video, voice dock.
    ===================================================================== */
 (function () {
   'use strict';
@@ -477,33 +477,64 @@
     });
   }
 
-  /* ---------- Vertical timeline (history) ---------- */
+  /* ---------- Editorial chronicle (history) ---------- */
   function initTimeline() {
-    const tl = document.querySelector('.tl');
-    if (!tl || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    const story = document.querySelector('.chronicle');
+    if (!story) return;
 
-    const fill = tl.querySelector('.tl__spine i');
+    const chapters = [...story.querySelectorAll('.chronicle__chapter')];
+    const currentYear = story.querySelector('.chronicle__meter-year');
+    const fill = story.querySelector('.chronicle__meter-fill');
+    const setActive = chapter => {
+      chapters.forEach(item => item.classList.toggle('is-active', item === chapter));
+      if (currentYear) currentYear.textContent = chapter.dataset.year || '';
+    };
+
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (fill) fill.style.transform = 'scaleY(1)';
+      return;
+    }
+
     if (fill) {
-      gsap.fromTo(fill, { height: '0%' }, {
-        height: '100%', ease: 'none',
-        scrollTrigger: { trigger: tl, start: 'top 55%', end: 'bottom 75%', scrub: .6 }
+      gsap.fromTo(fill, { scaleY: 0 }, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: story, start: 'top 45%', end: 'bottom 60%', scrub: .55 }
       });
     }
 
-    tl.querySelectorAll('.tl-row').forEach((row, i) => {
-      const media = row.querySelector('.tl-row__media');
-      const body = row.querySelector('.tl-row__body');
-      const dot = row.querySelector('.tl-row__dot b');
-      const mobile = window.matchMedia('(max-width: 768px)').matches;
-      // Odd rows: media enters from the left, copy from the right. Even rows mirror it.
+    chapters.forEach((chapter, i) => {
+      const visual = chapter.querySelector('.chronicle__visual');
+      const image = chapter.querySelector('.chronicle__visual img');
+      const year = chapter.querySelector('.chronicle__stamp time');
+      const copy = chapter.querySelectorAll('.chronicle__copy > *');
       const even = i % 2 === 1;
-      const mediaX = mobile ? 40 : (even ? 130 : -130);
-      const bodyX = mobile ? 40 : (even ? -130 : 130);
 
-      const t = gsap.timeline({ scrollTrigger: { trigger: row, start: 'top 82%', toggleActions: 'play none none reverse' } });
-      if (dot) t.fromTo(dot, { scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .7, ease: 'back.out(1.8)' });
-      if (media) t.fromTo(media, { x: mediaX, opacity: 0 }, { x: 0, opacity: 1, duration: 1.25, ease: 'expo.out' }, '-=.45');
-      if (body) t.fromTo(body, { x: bodyX, opacity: 0 }, { x: 0, opacity: 1, duration: 1.25, ease: 'expo.out' }, '<.1');
+      ScrollTrigger.create({
+        trigger: chapter,
+        start: 'top 56%',
+        end: 'bottom 44%',
+        onEnter: () => setActive(chapter),
+        onEnterBack: () => setActive(chapter)
+      });
+
+      const sequence = gsap.timeline({
+        scrollTrigger: { trigger: chapter, start: 'top 80%', once: true }
+      });
+      if (year) sequence.fromTo(year, { yPercent: 24, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1, ease: 'power3.out' });
+      if (visual) sequence.fromTo(visual,
+        { y: 44, scale: .975, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out' }, '-=.72');
+      if (image) sequence.fromTo(image,
+        { scale: 1.12, xPercent: even ? 1.5 : -1.5 },
+        { scale: 1.04, xPercent: 0, duration: 1.65, ease: 'power2.out' }, '-=1.08');
+      if (copy.length) sequence.fromTo(copy,
+        { y: 26, opacity: 0 },
+        { y: 0, opacity: 1, duration: .9, ease: 'power3.out', stagger: .08 }, '-=.82');
+
+      if (image) gsap.fromTo(image, { yPercent: -3 }, {
+        yPercent: 3, ease: 'none',
+        scrollTrigger: { trigger: chapter, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
     });
     ScrollTrigger.refresh();
   }
@@ -650,7 +681,7 @@
       const main = document.querySelector('main') || document.body;
       const parts = [];
       if (main.dataset.speech) parts.push(main.dataset.speech);
-      main.querySelectorAll('[data-speak], h1, h2, .lead, .split__body p, .leader__body p, .card p, .director__body p, .tl-row__body p, .news-item p, .acc__inner p, .quote p, .fin-step > p').forEach(el => {
+      main.querySelectorAll('[data-speak], h1, h2, .lead, .split__body p, .leader__body p, .card p, .director__body p, .chronicle__copy p, .news-item p, .acc__inner p, .quote p, .fin-step > p').forEach(el => {
         if (el.closest('.no-speak')) return;
         const t = el.textContent.replace(/\s+/g, ' ').trim();
         if (t && !parts.includes(t)) parts.push(t);
