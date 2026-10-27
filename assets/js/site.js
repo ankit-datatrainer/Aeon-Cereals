@@ -144,7 +144,7 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="distributor.html">Become a Distributor</a></li>
       </ul>
-      <p class="mobile-menu__foot"><a href="offices.html">Registered Office</a> &middot; B-8/254&ndash;255, IInd Floor, Sector-7, Rohini, New Delhi &ndash; 110085</p>
+      <p class="mobile-menu__foot"><a href="offices.html">Registered Office</a> &middot; B-5/254&ndash;255, IInd Floor, Sector-7, Rohini, New Delhi &ndash; 110085</p>
     </div>`);
   }
 
@@ -170,7 +170,7 @@
             <li><a href="distributor.html">Become a Distributor</a></li>
           </ul></div>
           <div><h4>Registered Office</h4><ul>
-            <li><a href="offices.html">B-8/254&ndash;255, IInd Floor,<br>Sector-7, Rohini,<br>New Delhi &ndash; 110085</a></li>
+            <li><a href="offices.html">B-5/254&ndash;255, IInd Floor,<br>Sector-7, Rohini,<br>New Delhi &ndash; 110085</a></li>
             <li><a href="mailto:info@aeoncereals.com">info@aeoncereals.com</a></li>
             <li><a href="tel:+919560969531">+91 95609 69531</a></li>
             <li><a class="footer__more" href="offices.html">View office &amp; map &rarr;</a></li>
