@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23E09A2E'/%3E%3Cpath d='M32 12c0 9-12 12-12 22a12 12 0 0 0 24 0c0-6-4-9-6-13-1 5-3 6-3 9 0-7-3-13-3-18Z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20261006">
+<link rel="stylesheet" href="assets/css/style.css?v=20261027">
 </head>
 <body>
 <main data-speech="Become a distributor. Partner with Aeon Cereals Limited to distribute the 4K Natural range in your territory. Fill in the application with your business details, location and distribution capacity, and our channel team will contact you within five working days.">
@@ -111,7 +111,18 @@
                   <option value="">Select</option>
                   <option>New to distribution</option><option>Less than 2 years</option><option>2 to 5 years</option><option>5 to 10 years</option><option>More than 10 years</option>
                 </select><span class="err"></span></div>
-              <div class="field"><label for="dGst">GSTIN</label><input id="dGst" name="gstin" type="text" maxlength="15" data-rule="gstin" placeholder="15-character GSTIN" style="text-transform:uppercase"><span class="hint">Optional at this stage, required before appointment.</span><span class="err"></span></div>
+              <div class="field"><label>Do you have a GST number?<span class="req">*</span></label>
+                <div class="check-grid choice-pair" data-min="1" data-msg="Please choose Yes or No.">
+                  <label><input type="radio" name="gst_registered" value="Yes"> Yes</label>
+                  <label><input type="radio" name="gst_registered" value="No"> No</label>
+                </div><span class="err"></span></div>
+              <div class="field" data-show-if="gst_registered=Yes" hidden><label for="dGst">GST number (GSTIN)<span class="req">*</span></label><input id="dGst" name="gstin" type="text" maxlength="15" required data-rule="gstin" data-msg="Please enter your GST number." placeholder="15-character GSTIN, e.g. 07ABCDE1234F1Z5" style="text-transform:uppercase"><span class="err"></span></div>
+              <div class="field" data-show-if="gst_registered=No" hidden><label>Have you applied for GST?<span class="req">*</span></label>
+                <div class="check-grid choice-pair" data-min="1" data-msg="Please choose Yes or No.">
+                  <label><input type="radio" name="gst_applied" value="Yes"> Yes</label>
+                  <label><input type="radio" name="gst_applied" value="No"> No</label>
+                </div><span class="err"></span>
+                <span class="hint" data-show-if="gst_applied=No" hidden>That is fine. GST registration is required before appointment, and our team can guide you through it.</span></div>
               <div class="field"><label for="dFssai">FSSAI licence / registration no.</label><input id="dFssai" name="fssai" type="text" inputmode="numeric" maxlength="14" data-rule="number" placeholder="14-digit number, if available"><span class="err"></span></div>
             </div>
           </fieldset>
@@ -223,7 +234,7 @@
           <ul class="contact-mini" style="margin-top:10px">
             <li><b>Phone</b><a href="tel:+919560969531">+91 95609 69531</a></li>
             <li><b>Email</b><a href="mailto:info@aeoncereals.com?subject=Distributor%20enquiry">info@aeoncereals.com</a></li>
-            <li><b>Office</b><a href="offices.html">Sector 9, Rohini, New Delhi</a></li>
+            <li><b>Office</b><a href="offices.html">Sector-7, Rohini, New Delhi</a></li>
           </ul>
         </div>
       </aside>
@@ -259,7 +270,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="assets/js/site.js?v=20261006"></script>
-<script src="assets/js/forms.js?v=20261006"></script>
+<script src="assets/js/site.js?v=20261027"></script>
+<script src="assets/js/forms.js?v=20261027"></script>
 </body>
 </html>

@@ -31,11 +31,11 @@
     { name: 'Board Committees', href: 'committees.html', tag: 'Governance' }
   ];
   const ABOUT_RD = [
-    { name: 'Research & Technology Development', href: 'research.html', desc: 'Food-safety science, testing and process technology' },
+    { name: 'Aeon Research & Technology Development', href: 'aeon-research-technology-development.html', desc: 'Food-safety science, testing and process technology' },
     { name: 'Innovation', href: 'innovation.html', desc: 'Clean-label products, packaging and digital' }
   ];
   const ABOUT_IMPACT = [
-    { name: 'Aeon Research Foundation', href: 'foundation.html', desc: 'Farmer livelihoods, nutrition and food-science research' }
+    { name: 'Aeon Research Foundation', href: 'aeon-research-foundation.html', desc: 'Rural development, education, health, women&rsquo;s empowerment and sports' }
   ];
   const ABOUT = [...ABOUT_COMPANY, ...ABOUT_RD, ...ABOUT_IMPACT];
   const BRAND_NAME = 'Aeon Cereals Limited';
@@ -83,10 +83,6 @@
           <span>FSSAI <b>13322001000902</b></span>
           <span>CIN <b>U74899DL1995PLC072664</b></span>
           <span>ISO <b>9001:2015 &amp; 22000</b></span>
-        </div>
-        <div class="topbar__links">
-          <a href="offices.html">Registered Office</a>
-          <a href="${SHOP}" target="_blank" rel="noopener">Shop 4K Natural</a>
         </div>
       </div>
     </div>
@@ -148,7 +144,7 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="distributor.html">Become a Distributor</a></li>
       </ul>
-      <p class="mobile-menu__foot"><a href="offices.html">Registered Office</a> &middot; Shop No. 18, CSC-6, Sector 9, Rohini, New Delhi 110085</p>
+      <p class="mobile-menu__foot"><a href="offices.html">Registered Office</a> &middot; B-8/254&ndash;255, IInd Floor, Sector-7, Rohini, New Delhi &ndash; 110085</p>
     </div>`);
   }
 
@@ -174,7 +170,7 @@
             <li><a href="distributor.html">Become a Distributor</a></li>
           </ul></div>
           <div><h4>Registered Office</h4><ul>
-            <li><a href="offices.html">Shop No. 18, CSC-6, Sector 9,<br>Rohini, New Delhi 110085</a></li>
+            <li><a href="offices.html">B-8/254&ndash;255, IInd Floor,<br>Sector-7, Rohini,<br>New Delhi &ndash; 110085</a></li>
             <li><a href="mailto:info@aeoncereals.com">info@aeoncereals.com</a></li>
             <li><a href="tel:+919560969531">+91 95609 69531</a></li>
             <li><a class="footer__more" href="offices.html">View office &amp; map &rarr;</a></li>
@@ -240,6 +236,8 @@
       initFlow();
       initHScroll();
       initTilt();
+      initStory();
+      initProductTabs();
       initHeroIntro();
       document.dispatchEvent(new CustomEvent('aeon:ready'));
     };
@@ -600,6 +598,48 @@
     });
   }
 
+  /* ---------- Story: sticky image follows the step in view ---------- */
+  function initStory() {
+    document.querySelectorAll('[data-story]').forEach(story => {
+      const steps = [...story.querySelectorAll('.story__step')];
+      const imgs = [...story.querySelectorAll('.story__media img')];
+      const count = story.querySelector('.story__count span');
+      const bar = story.querySelector('.story__bar i');
+      const set = i => {
+        steps.forEach((s, k) => s.classList.toggle('is-active', k === i));
+        imgs.forEach((m, k) => m.classList.toggle('is-active', k === i));
+        if (count) count.textContent = String(i + 1).padStart(2, '0');
+        if (bar) bar.style.transform = `scaleX(${(i + 1) / steps.length})`;
+      };
+      set(0);
+      if (typeof ScrollTrigger === 'undefined') return;
+      steps.forEach((s, i) => ScrollTrigger.create({
+        trigger: s, start: 'top 60%', end: 'bottom 60%',
+        onToggle: self => { if (self.isActive) set(i); }
+      }));
+    });
+  }
+
+  /* ---------- Product research tabs ---------- */
+  function initProductTabs() {
+    document.querySelectorAll('[data-ptabs]').forEach(box => {
+      const btns = [...box.querySelectorAll('.ptabs__list button')];
+      const panels = [...box.querySelectorAll('.ptab')];
+      const show = (i, animate) => {
+        btns.forEach((b, k) => { b.classList.toggle('is-active', k === i); b.setAttribute('aria-selected', k === i); });
+        panels.forEach((p, k) => { p.hidden = k !== i; });
+        const p = panels[i];
+        if (animate && typeof gsap !== 'undefined') {
+          gsap.fromTo(p.querySelector('.ptab__img img'), { scale: 1.18, opacity: .3 }, { scale: 1, opacity: 1, duration: 1.1, ease: 'expo.out' });
+          gsap.fromTo(p.querySelectorAll('.ptab__body > *'), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'expo.out', stagger: .05 });
+        }
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      };
+      btns.forEach((b, i) => b.addEventListener('click', () => show(i, true)));
+      show(0, false);
+    });
+  }
+
   /* ---------- 3D tilt on hover ---------- */
   function initTilt() {
     if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches || typeof gsap === 'undefined') return;
@@ -714,8 +754,8 @@
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     let rec = null, listening = false;
     const routes = [
-      [/home|start|main page/, 'index.html'], [/foundation|impact|csr|social/, 'foundation.html'], [/innovat/, 'innovation.html'],
-      [/research|technology|r and d|r&d|laborator|lab/, 'research.html'], [/history/, 'history.html'], [/founder/, 'founder.html'],
+      [/home|start|main page/, 'index.html'], [/foundation|impact|csr|social/, 'aeon-research-foundation.html'], [/innovat/, 'innovation.html'],
+      [/research|technology|r and d|r&d|laborator|lab/, 'aeon-research-technology-development.html'], [/history/, 'history.html'], [/founder/, 'founder.html'],
       [/managing director|chairman/, 'chairman.html'], [/committee/, 'committees.html'], [/board|director/, 'board.html'],
       [/career|job|hiring|vacanc/, 'careers.html'], [/distribut|dealer|partner/, 'distributor.html'], [/financ|report|otp|investor/, 'financials.html'], [/office|address|contact|location/, 'offices.html'], [/news|media|press/, 'news.html'],
       [/product|catalog|business|fmcg|4k/, 'products.html']

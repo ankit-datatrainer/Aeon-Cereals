@@ -8,8 +8,8 @@ Static corporate site (HTML, CSS, vanilla JavaScript) for **Aeon Cereals Limited
 |---|---|---|
 | Home | Home | `index.html` |
 | About | Our History, Founder-Chairman, Chairman & MD, Board of Directors, Board Committees | `history.html`, `founder.html`, `chairman.html`, `board.html`, `committees.html` |
-| About → Research & Development | Research & Technology Development, Innovation | `research.html`, `innovation.html` |
-| About → Our Impact | Aeon Research Foundation (with partnership form) | `foundation.html` |
+| About → Research & Development | Aeon Research & Technology Development, Innovation | `aeon-research-technology-development.html`, `innovation.html` |
+| About → Our Impact | Aeon Research Foundation (with partnership form) | `aeon-research-foundation.html` |
 | Business → FMCG → 4K Natural | Brand overview; product links open 4knatural.com | `products.html` |
 | Investors → Financials | OTP-gated company report | `financials.html` |
 | News & Media | Announcements and press | `news.html` |

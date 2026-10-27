@@ -26,8 +26,43 @@
     el.setAttribute('aria-invalid', msg ? 'true' : 'false');
   }
 
+  const isGroupInput = el => (el.type === 'checkbox' || el.type === 'radio') && el.closest('.check-grid');
+  const isHidden = el => !!el.closest('[hidden]');
+
+  /* Conditional fields: [data-show-if="name=value"] appears only when that answer is chosen.
+     Hidden fields are disabled, so they are neither validated nor submitted. */
+  function applyConditions(form) {
+    form.querySelectorAll('[data-show-if]').forEach(box => {
+      const [name, value] = box.dataset.showIf.split('=');
+      const picked = form.querySelector(`[name="${name}"]:checked`) || form.querySelector(`select[name="${name}"]`);
+      const show = !!picked && !picked.disabled && picked.value === value;
+      if (box.hidden === !show) return;
+      box.hidden = !show;
+      box.querySelectorAll('input, select, textarea').forEach(el => {
+        el.disabled = !show;
+        if (!show) {
+          if (el.type === 'radio' || el.type === 'checkbox') el.checked = false; else el.value = '';
+          setError(el, '');
+        }
+      });
+      box.querySelectorAll('.check-grid').forEach(g => g.classList.remove('is-error'));
+      box.querySelectorAll('.err').forEach(e => e.textContent = '');
+      if (show) {
+        box.classList.remove('is-revealed'); void box.offsetWidth; box.classList.add('is-revealed');
+      }
+    });
+    // A nested condition may depend on a field that was just hidden
+    if ([...form.querySelectorAll('[data-show-if]')].some(b => {
+      const [n, v] = b.dataset.showIf.split('=');
+      const p = form.querySelector(`[name="${n}"]:checked`);
+      return !b.hidden && !(p && !p.disabled && p.value === v);
+    })) applyConditions(form);
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+  }
+
   function validateField(el) {
-    if (el.type === 'checkbox' && el.closest('.check-grid')) return true; // handled as a group
+    if (el.disabled || isHidden(el)) return true;
+    if (isGroupInput(el)) return true; // handled as a group
     let v = (el.value || '').trim();
     const rule = RULES[el.dataset.rule];
     if (rule && rule.clean && v) { v = rule.clean(v); el.value = v; }
@@ -56,6 +91,7 @@
   function validateGroups(form) {
     let ok = true;
     form.querySelectorAll('.check-grid[data-min]').forEach(g => {
+      if (isHidden(g)) return;
       const min = parseInt(g.dataset.min, 10) || 1;
       const n = g.querySelectorAll('input:checked').length;
       const f = g.closest('.field');
@@ -81,6 +117,7 @@
 
   document.querySelectorAll('form[data-aeon-form]').forEach(form => {
     const fields = [...form.querySelectorAll('input, select, textarea')].filter(el => el.type !== 'hidden');
+    applyConditions(form);
     const summary = form.querySelector('.form-summary');
     const btn = form.querySelector('button[type=submit]');
     const shell = form.closest('.form-shell');
@@ -88,7 +125,8 @@
 
     fields.forEach(el => {
       const ev = el.tagName === 'SELECT' || el.type === 'checkbox' || el.type === 'file' ? 'change' : 'blur';
-      el.addEventListener(ev, () => { if (el.type === 'checkbox' && el.closest('.check-grid')) validateGroups(form); else validateField(el); });
+      const ev2 = el.type === 'radio' ? 'change' : ev;
+      el.addEventListener(ev2, () => { applyConditions(form); if (isGroupInput(el)) validateGroups(form); else validateField(el); });
       el.addEventListener('input', () => { if (el.getAttribute('aria-invalid') === 'true') validateField(el); });
     });
 
@@ -152,6 +190,7 @@
       const again = success.querySelector('[data-reset]');
       if (again) again.addEventListener('click', () => {
         form.reset();
+        applyConditions(form);
         form.querySelectorAll('.file-drop b').forEach(b => b.textContent = b.dataset.default || 'Choose a file or drag it here');
         fields.forEach(el => setError(el, ''));
         success.classList.remove('is-visible');
